@@ -28,6 +28,7 @@ date_default_timezone_set('PRC');
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>书籍列表</title>
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
@@ -43,7 +44,7 @@ $(document).ready( function () {
 			"search": "搜索: ",
 			"lengthMenu": "每页 _MENU_ 条",
 			"paginate": {"first":"首页", "last":"末页", "next":"下一页", "previous":"上一页"} 
-		}
+		},
 	});
 } );
 </script>
