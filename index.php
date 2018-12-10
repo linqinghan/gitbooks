@@ -5,7 +5,7 @@ function readDirectory($path) {
 	$handle = opendir($path);
 	$arr = array();
 	while (($item = readdir($handle)) != false) {
-		if ($item != '.' && $item != "..") {
+		if ($item != '.' && $item != ".." && $item != ".git") {
 			if (is_dir($path.'/'.$item)) {
 				$arr['dir'][] = $item;
 			}
@@ -29,9 +29,9 @@ date_default_timezone_set('PRC');
 <head>
 <meta charset="utf-8">
 <title>书籍列表</title>
-<link href="dt/jquery.dataTables.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" charset="utf-8" src="js/jquery-1.11.3.min.js" ></script>
-<script type="text/javascript" charset="utf-8" src="dt/jquery.dataTables.js" ></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 <script type="text/javascript">		
 $(document).ready( function () {
 	$('#table_gitbooks').DataTable( {		
@@ -67,11 +67,12 @@ $(document).ready( function () {
 		$i = 1;
 		foreach ($info['dir'] as $val) {
 			$fullpath = $path.'/'.$val;
+			$url = $val.'/_book';
 ?>
 
 <tr>
 	<td><?php echo $i; ?></td>
-	<td><a href="<?php echo $val; ?>"><?php echo $val; ?></a></td>
+	<td><a href="<?php echo $url; ?>"><?php echo $val; ?></a></td>
 	<td><?php echo date('Y-m-d H:i:s', filemtime($fullpath)); ?></td>
 </tr>
 	<?php 
